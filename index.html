@@ -1,0 +1,54 @@
+<html>
+<head>
+   <link rel="stylesheet" href="index.css">
+</head>
+   <body>
+      
+      <div id="container" class="wrapper">
+         
+      </div>
+      
+   </body>
+</html>
+
+<script>
+   var data = [{"Id" : 123, "name" : 'Joe Cocker'},
+               {"Id" : 124, "name" : 'JFK'}
+              ];
+            
+   var role = [{"roleId" : 1, "description" : "Manager"},
+               {"roleId" : 2, "description" : "Waiter"},
+              ];
+
+   var text1 = '', text2 = '';
+
+   data.forEach(show_names);
+   document.getElementById("container").innerHTML = text1;
+
+   var elems = document.getElementsByClassName('card');
+   for (var i = 0; i < elems.length; i++) {
+      elems[i].addEventListener('mouseover', t);
+   }
+
+   function t(e){
+      let elem = e.target;
+      let n = elem.dataset.id;
+      console.log(n);
+      text2 = "";
+      role.forEach(fill_role);
+      elem.getElementsByClassName("fly_box")[0].innerHTML = text2;
+   }
+
+   function show_names(item, index){
+      console.log(item.name);
+      text1 += `<div class="card" data-id='${index}'><p class="id">${item.Id}</p><p class="name">${item.name}</p>
+        <div class="fly_box"></div>
+        </div>`;      
+   }
+
+   function fill_role(item, index){
+      text2 += `<span>${item.description}</span><hr>`;    
+   }
+
+
+</script>
